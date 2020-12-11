@@ -1,0 +1,24 @@
+﻿<Window x:Class="SqlMonitor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SqlMonitor"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <DockPanel Width="200" HorizontalAlignment="Left">
+            <Label DockPanel.Dock="Top" Content="Host:"/>
+            <TextBox x:Name="Host_TextBox" DockPanel.Dock="Top" Margin="10, 0" Text="localhost"/>
+            <Label DockPanel.Dock="Top" Content="Username:"/>
+            <TextBox x:Name="User_TextBox" DockPanel.Dock="Top" Margin="10, 0" Text="sa"/>
+            <Label DockPanel.Dock="Top" Content="Password:"/>
+            <PasswordBox x:Name="Password_PasswordBox" DockPanel.Dock="Top" Margin="10,0" Password="123123"/>
+            <Button Content="Connect" DockPanel.Dock="Top" Margin="10" Click="Button_Click"/>
+            <TreeView x:Name="TreeView_TreeView" Margin="10,0 ,10,10" SelectedItemChanged="TreeView_TreeView_SelectedItemChanged"/>
+        </DockPanel>
+        <RichTextBox x:Name="Query_TextBox" Margin="205,10,10,0" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="100" KeyDown="Query_TextBox_KeyDown"/>
+        <DataGrid x:Name="DataGrid" HorizontalAlignment="Stretch" Margin="205,115,9.6,71" VerticalAlignment="Stretch"/>
+        <TextBox Name="textBoxDebug" ScrollViewer.VerticalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" TextWrapping="Wrap" Margin="205,0,9.6,10" IsEnabled="False" Height="56" VerticalContentAlignment="Bottom"/>
+    </Grid>
+</Window>
