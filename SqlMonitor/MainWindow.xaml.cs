@@ -29,14 +29,22 @@ namespace SqlMonitor
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            DatabaseHandler = new DatabaseHandler(Host_TextBox.Text, User_TextBox.Text, Password_PasswordBox.Password);
-            DataTable table = DatabaseHandler.RunQuery("SELECT name FROM master.sys.databases");
-            List<string> dbs = table.AsEnumerable().Select(r => r.Field<string>("name")).ToList();
-            TreeView_TreeView.Items.Clear();
-            foreach(string db in dbs)
+            try
             {
-                TreeView_TreeView.Items.Add(db);
+                DatabaseHandler = new DatabaseHandler(Host_TextBox.Text, User_TextBox.Text, Password_PasswordBox.Password);
+                DataTable table = DatabaseHandler.RunQuery("SELECT name FROM master.sys.databases");
+                List<string> dbs = table.AsEnumerable().Select(r => r.Field<string>("name")).ToList();
+                TreeView_TreeView.Items.Clear();
+                foreach (string db in dbs)
+                {
+                    TreeView_TreeView.Items.Add(db);
+                }
             }
+            catch(Exception ex)
+            {
+                LogConsole(ex.Message);
+            }
+            
             
         }
 
@@ -50,16 +58,20 @@ namespace SqlMonitor
         {
             if(e.Key.Equals(Key.Enter))
             {
-                try
-                {
-                    DataTable table = DatabaseHandler.RunQuery(new TextRange(Query_TextBox.Document.ContentStart, Query_TextBox.Document.ContentEnd).Text);
-                    DataGrid.ItemsSource = table.DefaultView;
-                }
-                catch(Exception ex)
-                {
-                    LogConsole(ex.Message);
-                }
-                
+                RunQuery();
+            }
+        }
+
+        private void RunQuery()
+        {
+            try
+            {
+                DataTable table = DatabaseHandler.RunQuery(new TextRange(Query_TextBox.Document.ContentStart, Query_TextBox.Document.ContentEnd).Text);
+                DataGrid.ItemsSource = table.DefaultView;
+            }
+            catch (Exception ex)
+            {
+                LogConsole(ex.Message);
             }
         }
         
@@ -67,6 +79,11 @@ namespace SqlMonitor
         {
             LogConsole(TreeView_TreeView.SelectedItem.ToString() + " wurde ausgewählt.");
             DatabaseHandler.setDatabase(TreeView_TreeView.SelectedItem.ToString());
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            RunQuery();
         }
     }
 }

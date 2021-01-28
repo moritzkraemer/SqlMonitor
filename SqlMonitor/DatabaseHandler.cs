@@ -21,17 +21,18 @@ namespace SqlMonitor
             sqlConnectionStringBuilder.UserID = username;
             sqlConnectionStringBuilder.Password = password;
             SqlConnection = new SqlConnection(sqlConnectionStringBuilder.ConnectionString);
+            SqlConnection.Open();
         }
 
         public void setDatabase(string database)
         {
+            
             SqlCommand command = new SqlCommand("USE " + database, SqlConnection);
             //command.Parameters.Add("@db", SqlDbType.VarChar);
             //command.Parameters["@db"].Value = database;
 
             try
             {
-                SqlConnection.Open();
                 command.ExecuteNonQuery();
             }
             catch (Exception ex)

@@ -18,7 +18,8 @@
             <TreeView x:Name="TreeView_TreeView" Margin="10,0 ,10,10" SelectedItemChanged="TreeView_TreeView_SelectedItemChanged"/>
         </DockPanel>
         <RichTextBox x:Name="Query_TextBox" Margin="205,10,10,0" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="100" KeyDown="Query_TextBox_KeyDown"/>
-        <DataGrid x:Name="DataGrid" HorizontalAlignment="Stretch" Margin="205,115,9.6,71" VerticalAlignment="Stretch"/>
-        <TextBox Name="textBoxDebug" ScrollViewer.VerticalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" TextWrapping="Wrap" Margin="205,0,9.6,10" IsEnabled="False" Height="56" VerticalContentAlignment="Bottom"/>
+        <DataGrid x:Name="DataGrid" HorizontalAlignment="Stretch" Margin="205,140,10,99" VerticalAlignment="Stretch"/>
+        <TextBox Name="textBoxDebug" ScrollViewer.VerticalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" TextWrapping="Wrap" Margin="205,0,10,10" IsEnabled="False" Height="84" VerticalContentAlignment="Bottom"/>
+        <Button Content="Ausführen" HorizontalAlignment="Right" Margin="0,115,10,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.062,-0.248" Click="Button_Click_1"/>
     </Grid>
 </Window>
