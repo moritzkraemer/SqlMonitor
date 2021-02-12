@@ -80,7 +80,7 @@ namespace SqlMonitor
         private void TreeView_TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
             LogConsole(TreeView_TreeView.SelectedItem.ToString() + " wurde ausgewählt.");
-            DatabaseHandler.setDatabase(TreeView_TreeView.SelectedItem.ToString());
+            DatabaseHandler.SetDatabase(TreeView_TreeView.SelectedItem.ToString());
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

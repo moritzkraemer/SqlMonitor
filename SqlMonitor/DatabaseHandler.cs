@@ -12,7 +12,7 @@ namespace SqlMonitor
 
     class DatabaseHandler
     {
-        SqlConnection SqlConnection;
+        private SqlConnection SqlConnection;
 
         public DatabaseHandler(string host, string username, string password)
         {
@@ -24,7 +24,7 @@ namespace SqlMonitor
             SqlConnection.Open();
         }
 
-        public void setDatabase(string database)
+        public void SetDatabase(string database)
         {
             
             SqlCommand command = new SqlCommand("USE " + database, SqlConnection);
