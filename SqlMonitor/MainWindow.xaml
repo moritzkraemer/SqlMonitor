@@ -21,5 +21,7 @@
         <DataGrid x:Name="DataGrid" HorizontalAlignment="Stretch" Margin="205,140,10,99" VerticalAlignment="Stretch"/>
         <TextBox Name="textBoxDebug" ScrollViewer.VerticalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" TextWrapping="Wrap" Margin="205,0,10,10" IsEnabled="False" Height="84" VerticalContentAlignment="Bottom"/>
         <Button Content="Ausführen" HorizontalAlignment="Right" Margin="0,115,10,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.062,-0.248" Click="Button_Click_1"/>
+        <Button x:Name="Save_Button" Content="Speichern" Margin="0,115,90,0" VerticalAlignment="Top" Click="Save_Button_Click" HorizontalAlignment="Right" Width="75"/>
+        <Button x:Name="Load_Button" Content="Laden" HorizontalAlignment="Right" Margin="0,115,170,0" VerticalAlignment="Top" Width="75" Click="Load_Button_Click"/>
     </Grid>
 </Window>

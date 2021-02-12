@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -84,6 +86,27 @@ namespace SqlMonitor
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             RunQuery();
+        }
+
+        private void Save_Button_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Sql-Dateien|*.sql";
+            if(saveFileDialog.ShowDialog() == true)
+            {
+                File.WriteAllText(saveFileDialog.FileName, new TextRange(Query_TextBox.Document.ContentStart, Query_TextBox.Document.ContentEnd).Text);
+            }
+        }
+
+        private void Load_Button_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Sql-Dateien|*.sql";
+            if(openFileDialog.ShowDialog() == true)
+            {
+                Query_TextBox.Document.Blocks.Clear();
+                Query_TextBox.Document.Blocks.Add(new Paragraph(new Run(File.ReadAllText(openFileDialog.FileName))));
+            }
         }
     }
 }
